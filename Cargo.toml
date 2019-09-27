@@ -1,0 +1,30 @@
+[package]
+name = "sasl-sgx"
+version = "0.4.3"
+authors = ["lumi <lumi@pew.im>"]
+description = "A crate for SASL authentication. Currently only does the client side."
+homepage = "https://gitlab.com/lumi/sasl-rs"
+repository = "https://gitlab.com/lumi/sasl-rs"
+documentation = "https://docs.rs/sasl"
+readme = "README.md"
+keywords = ["sasl", "authentication"]
+license = "LGPL-3.0+"
+edition = "2018"
+
+[badges]
+gitlab = { repository = "lumi/sasl-rs" }
+
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = ["std","sgx_tstd"]
+scram = [ "base64", "rand_os", "sha1", "sha2", "hmac-drbg", "pbkdf2"]
+std = ["mesalock_sgx"]
+
+[dependencies]
+sgx_tstd = {rev = "v1.0.9", get = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
+base64 = { git = "https://github.com/mesalock-linux/rust-base64-sgx", optional = true }
+rand_os = { git = "https://github.com/mesalock-linux/rand-sgx", optional = true }
+sha1 = { git = "https://github.com/mesalock-linux/rust-sha1-sgx", optional = true }
+sha2 = { version = "0.8", optional = true }
+hmac-drbg = { git = "https://github.com/mesalock-linux/hmac-drbg-rs-sgx", optional = true }
+pbkdf2 = { version = "0.3", default-features = false, optional = true }
