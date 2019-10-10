@@ -21,7 +21,7 @@ scram = [ "base64", "rand_os", "sha1", "sha2", "hmac-drbg", "pbkdf2"]
 std = ["mesalock_sgx"]
 
 [dependencies]
-sgx_tstd = {rev = "v1.0.9", get = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
+sgx_tstd = {rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 base64 = { git = "https://github.com/mesalock-linux/rust-base64-sgx", optional = true }
 rand_os = { git = "https://github.com/mesalock-linux/rand-sgx", optional = true }
 sha1 = { git = "https://github.com/mesalock-linux/rust-sha1-sgx", optional = true }
